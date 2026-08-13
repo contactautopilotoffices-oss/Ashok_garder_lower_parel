@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autopilot Offices — Mafatlal Chambers, Lower Parel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#000000;
+    --paper:#FFFFFF;
+    --cobalt:#4E6FB5;
+    --cobalt-deep:#3C5896;
+    --line:#E3E5EA;
+    --muted:#000000;
+    --soft:#F4F5F7;
+    --display:'Space Grotesk', sans-serif;
+    --text:'Archivo', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{background:#FFFFFF;}
+  body{font-family:var(--text);color:var(--ink);-webkit-font-smoothing:antialiased;display:flex;justify-content:center;hyphens:none;-webkit-hyphens:none;}
+
+  .page{
+    width:100%;max-width:1240px;
+    background:var(--paper);
+    position:relative;
+    overflow:hidden;
+    container-type:inline-size;
+  }
+
+  /* ---------- shared bits ---------- */
+  .eyebrow{
+    font-family:var(--text);
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--cobalt);
+    display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--cobalt);display:inline-block;}
+  .section{padding:0 64px;}
+
+  /* ---------- header band ---------- */
+  .topbar{
+    background:var(--ink);
+    height:84px;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 64px;
+  }
+  .topbar img{height:26px;filter:invert(1);}
+  .topbar .tag{
+    color:#fff;font-family:var(--display);font-weight:500;
+    font-size:13px;letter-spacing:.34em;text-transform:uppercase;
+    opacity:.85;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;height:560px;overflow:hidden;}
+  .hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .hero .scrim{
+    position:absolute;inset:0;
+    background:linear-gradient(90deg, rgba(0,0,0,.86) 0%, rgba(0,0,0,.72) 38%, rgba(0,0,0,.18) 72%, rgba(0,0,0,0) 100%);
+  }
+  .hero .content{
+    position:absolute;inset:0;
+    padding:54px 64px;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    color:#fff;max-width:840px;
+  }
+  .hero .eyebrow{color:#fff;}
+  .hero .eyebrow::before{background:var(--cobalt);width:30px;}
+  .hero h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:52px;
+    line-height:1.04;
+    letter-spacing:-.015em;
+    margin:20px 0 0;
+    text-wrap:balance;
+  }
+  .hero h1 .hl{color:#fff;}
+  .hero .addr{
+    display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+    margin-top:26px;
+  }
+  .hero .addr .place{
+    font-family:var(--display);font-weight:500;font-size:16px;letter-spacing:.04em;
+    color:#fff;
+  }
+  .seatpill{
+    display:inline-flex;align-items:center;gap:9px;white-space:nowrap;
+    background:var(--cobalt);color:#fff;
+    font-family:var(--display);font-weight:600;font-size:14px;letter-spacing:.06em;
+    padding:9px 16px;border-radius:2px;
+  }
+  .seatpill b{font-weight:700;}
+
+  /* ---------- positioning strip ---------- */
+  .strip{
+    background:var(--ink);color:#fff;
+    display:flex;align-items:center;justify-content:center;gap:38px;
+    padding:18px 64px;
+    flex-wrap:wrap;
+  }
+  .strip span{
+    font-family:var(--display);font-weight:500;font-size:14.5px;letter-spacing:.05em;
+    display:flex;align-items:center;gap:14px;
+  }
+  .strip span::before{content:"";width:6px;height:6px;background:var(--cobalt);transform:rotate(45deg);display:inline-block;}
+
+  /* ---------- location ---------- */
+  .location{padding:54px 64px 46px;}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:30px;}
+  .sec-head h2{
+    font-family:var(--display);font-weight:700;font-size:30px;letter-spacing:-.01em;
+  }
+  .sec-head .lede{
+    font-family:var(--display);font-weight:500;font-size:16px;color:var(--muted);letter-spacing:.02em;
+    white-space:nowrap;
+  }
+  .transit{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;}
+  .tnode{
+    border:1px solid var(--line);
+    border-top:3px solid var(--cobalt);
+    padding:24px 24px 22px;
+    display:flex;flex-direction:column;gap:14px;
+    min-height:188px;
+  }
+  .tnode .row{display:flex;align-items:center;justify-content:space-between;}
+  .tnode .num{
+    font-family:var(--display);font-weight:700;font-size:15px;color:var(--cobalt);letter-spacing:.1em;
+  }
+  .tnode .ico{color:var(--ink);}
+  .tnode h3{font-family:var(--display);font-weight:600;font-size:19px;line-height:1.2;margin-top:auto;}
+  .tnode p{font-size:13.5px;color:var(--muted);line-height:1.45;}
+  .walk{
+    display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+    font-family:var(--display);font-weight:600;font-size:13px;letter-spacing:.04em;
+    color:var(--ink);
+    border:1px solid var(--line);background:var(--soft);
+    padding:7px 12px;border-radius:2px;width:fit-content;
+  }
+  .walk svg{color:var(--cobalt);}
+
+  /* ---------- formats ---------- */
+  .formats{padding:6px 64px 50px;}
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px;}
+  .fcard{padding:30px 30px 32px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;}
+  .fcard.dark{background:var(--ink);color:#fff;}
+  .fcard.lite{background:var(--soft);color:var(--ink);border:1px solid var(--line);}
+  .fcard .ftag{
+    font-family:var(--text);font-weight:700;font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--cobalt);
+  }
+  .fcard.dark .ftag{color:#8aa3d6;}
+  .fcard h3{font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:-.01em;}
+  .fcard p{font-size:15px;line-height:1.5;color:var(--muted);max-width:42ch;}
+  .fcard.dark p{color:#b9bcc6;}
+  .fcard .corner{
+    position:absolute;right:-30px;top:-30px;width:120px;height:120px;
+    border:18px solid var(--cobalt);opacity:.14;border-radius:50%;
+  }
+
+  /* ---------- amenities ---------- */
+  .amen{padding:6px 64px 52px;}
+  .agrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:28px;border:1px solid var(--line);}
+  .acell{
+    padding:26px 22px;display:flex;flex-direction:column;gap:16px;
+    border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    min-height:128px;
+  }
+  .agrid .acell:nth-child(4n){border-right:none;}
+  .agrid .acell:nth-child(n+5){}
+  .acell .ai{color:var(--cobalt);}
+  .acell h4{font-family:var(--display);font-weight:600;font-size:15.5px;line-height:1.25;}
+
+  /* ---------- trusted ---------- */
+  .trusted{padding:8px 64px 54px;}
+  .logos{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:26px;
+  }
+  .lbox{
+    border:1px solid var(--line);
+    height:104px;display:flex;align-items:center;justify-content:center;
+    padding:14px 26px;background:#fff;
+  }
+  .lbox img{max-width:100%;max-height:100%;object-fit:contain;}
+  .lbox.tv9 img{transform:scale(1.05);}
+  .lbox.melento img{transform:scale(1.04);}
+
+  /* ---------- footer ---------- */
+  .footer{
+    background:var(--ink);color:#fff;
+    padding:40px 64px;
+    display:flex;align-items:flex-start;justify-content:space-between;gap:30px;
+  }
+  .footer .fleft{display:flex;flex-direction:column;align-items:flex-start;gap:8px;}
+  .footer .cta{
+    font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.01em;
+  }
+  .footer .sub{font-size:14px;color:#b9bcc6;letter-spacing:.02em;}
+  .footer .fbtn{
+    display:inline-flex;align-items:center;gap:11px;
+    background:var(--cobalt);color:#fff;text-decoration:none;
+    font-family:var(--display);font-weight:600;font-size:18px;letter-spacing:.04em;
+    padding:15px 26px;border-radius:2px;white-space:nowrap;
+  }
+  .footer .fcontact{display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+  .fform{display:grid;grid-template-columns:1fr 1fr;gap:12px;width:460px;}
+  .fform .ff{display:flex;flex-direction:column;gap:6px;}
+  .fform .ff.full{grid-column:1/-1;}
+  .fform label{font-family:var(--display);font-weight:500;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#b9bcc6;}
+  .fform input{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.28);border-radius:2px;padding:11px 13px;font-family:var(--text);font-size:14px;color:#fff;outline:none;width:100%;}
+  .fform input::placeholder{color:#7a7e88;}
+  .fform input:focus{border-color:var(--cobalt);}
+  .fform .fmsg{grid-column:1/-1;font-size:13.5px;line-height:1.4;color:#b9bcc6;display:none;padding:8px 12px;border-radius:2px;}
+  .fform .fmsg.ok{display:block;color:#9db8e8;background:rgba(78,111,181,.15);border:1px solid var(--cobalt);}
+  .fform .fmsg.err{display:block;color:#f87171;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);}
+  .fform .fsubmit{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:11px;background:var(--cobalt);color:#fff;border:none;cursor:pointer;font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.03em;padding:14px 26px;border-radius:2px;white-space:nowrap;transition:background .2s;}
+  .fform .fsubmit:hover{background:var(--cobalt-deep);}
+
+  /* Confirmation Modal */
+  .confirm-modal {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .confirm-modal.active {
+    opacity: 1; pointer-events: auto;
+  }
+  .confirm-card {
+    background: #0d0d0d; color: #fff;
+    border: 1px solid var(--cobalt);
+    border-radius: 4px;
+    padding: 40px 32px;
+    max-width: 480px; width: 100%;
+    text-align: center;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.8);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+  }
+  .confirm-modal.active .confirm-card {
+    transform: translateY(0);
+  }
+  .confirm-card .check-icon {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: rgba(78, 111, 181, 0.2); color: var(--cobalt);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    border: 2px solid var(--cobalt);
+  }
+  .confirm-card h2 {
+    font-family: var(--display); font-size: 24px; font-weight: 700; margin-bottom: 12px;
+  }
+  .confirm-card p {
+    font-size: 15px; line-height: 1.5; color: #b9bcc6; margin-bottom: 24px;
+  }
+  .confirm-close-btn {
+    background: var(--cobalt); color: #fff; border: none;
+    padding: 12px 32px; font-family: var(--display); font-weight: 600;
+    font-size: 15px; border-radius: 2px; cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .confirm-close-btn:hover {
+    background: var(--cobalt-deep);
+  }
+  .footer .cname{
+    font-family:var(--display);font-weight:500;font-size:14px;letter-spacing:.18em;
+    text-transform:uppercase;color:#b9bcc6;white-space:nowrap;
+  }
+  .footer .fbtn svg{transform:translateY(0);}
+
+  @container (max-width:1100px){
+    .topbar,.strip,.location,.formats,.amen,.trusted,.footer{padding-left:40px;padding-right:40px;}
+    .hero .content{padding:40px;}
+    .hero h1{font-size:44px;}
+  }
+  @container (max-width:820px){
+    .topbar{height:64px;padding-left:24px;padding-right:24px;}
+    .topbar img{height:20px;}
+    .topbar .tag{font-size:10px;letter-spacing:.22em;}
+    .hero{height:440px;}
+    .hero .content{padding:24px;}
+    .hero h1{font-size:30px;}
+    .hero .addr{gap:12px;margin-top:18px;}
+    .hero .addr .place{font-size:14px;}
+    .strip{flex-direction:column;align-items:flex-start;gap:10px;padding:16px 24px;}
+    .location{padding:36px 24px 32px;}
+    .formats,.amen,.trusted{padding-left:24px;padding-right:24px;}
+    .formats{padding-bottom:36px;}
+    .sec-head{flex-direction:column;align-items:flex-start;gap:6px;margin-bottom:22px;}
+    .sec-head h2{font-size:24px;}
+    .sec-head .lede{white-space:normal;font-size:14px;}
+    .transit{grid-template-columns:1fr;gap:14px;}
+    .tnode{min-height:0;gap:10px;}
+    .fgrid{grid-template-columns:1fr;gap:14px;margin-top:20px;}
+    .agrid{grid-template-columns:1fr 1fr;margin-top:20px;}
+    .agrid .acell{min-height:0;padding:18px 16px;border-right:1px solid var(--line);}
+    .agrid .acell:nth-child(2n){border-right:none;}
+    .logos{grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;}
+    .lbox{height:84px;padding:12px 18px;}
+    .trusted{padding-bottom:36px;}
+    .footer{flex-direction:column;align-items:stretch;padding:28px 24px 32px;}
+    .footer .cta{font-size:20px;}
+    .fform{width:100%;}
+  }
+
+  @page{size:1240px 2424px;margin:0;}
+  @media print{
+    html,body{background:#fff;padding:0;margin:0;width:1240px;height:2424px;overflow:hidden;}
+    .page{box-shadow:none;width:1240px;max-width:1240px;page-break-inside:avoid;break-inside:avoid;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+  <div class="page" data-screen-label="Autopilot Offices One-Pager">
+
+    <!-- HEADER -->
+    <div class="topbar">
+      <img src="assets/autopilot-logo-tight.jpg" alt="Autopilot">
+      <div class="tag">Managed Offices · Mumbai</div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+      <img src="assets/workspace.jpg" alt="Managed office workspace at Mafatlal Chambers">
+      <div class="scrim"></div>
+      <div class="content">
+        <div class="eyebrow">Enterprise‑Ready Workspace</div>
+        <h1>Enterprise‑Ready Managed Offices in <span class="hl">Lower Parel</span></h1>
+        <div class="addr">
+          <span class="place">Mafatlal Chambers · Lower Parel, Mumbai</span>
+          <span class="seatpill"><b>10–500</b> SEATS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- POSITIONING STRIP -->
+    <div class="strip">
+      <span>Mumbai's Premier Business Hub</span>
+      <span>Strategic Location for Corporate Enterprises</span>
+    </div>
+
+    <!-- LOCATION ADVANTAGE -->
+    <div class="location">
+      <div class="eyebrow">Location Advantage</div>
+      <div class="sec-head" style="margin-top:14px;">
+        <h2>Connected. Central. Convenient.</h2>
+        <div class="lede">Three transit lines within walking distance</div>
+      </div>
+      <div class="transit">
+        <div class="tnode">
+          <div class="row">
+            <span class="num">01</span>
+            <span class="ico">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="3" width="12" height="13" rx="3"/><path d="M6 10h12"/><circle cx="9" cy="13" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="13" r="1" fill="currentColor" stroke="none"/><path d="M8 16l-2 5M16 16l2 5"/></svg>
+            </span>
+          </div>
+          <h3>Lower Parel Monorail Station</h3>
+          <p>Rapid <span style="white-space:nowrap">East–West</span> transit link</p>
+          <div class="walk">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13" cy="4" r="2"/><path d="M11 21l1-6-3-2 2-5 3 3 3 1"/><path d="M9 13l-2 3"/></svg>
+            2–3 min walk
+          </div>
+        </div>
+        <div class="tnode">
+          <div class="row">
+            <span class="num">02</span>
+            <span class="ico">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="3" width="14" height="14" rx="2"/><path d="M5 11h14"/><circle cx="9" cy="14" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1" fill="currentColor" stroke="none"/><path d="M7 17l-2 4M17 17l2 4"/><path d="M8 21h8"/></svg>
+            </span>
+          </div>
+          <h3>Currey Road Railway Station</h3>
+          <p>Central Suburban line access</p>
+          <div class="walk">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13" cy="4" r="2"/><path d="M11 21l1-6-3-2 2-5 3 3 3 1"/><path d="M9 13l-2 3"/></svg>
+            3–5 min walk
+          </div>
+        </div>
+        <div class="tnode">
+          <div class="row">
+            <span class="num">03</span>
+            <span class="ico">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 9c0-3.3 2-5 6-5s6 1.7 6 5v8.5a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2Z"/><rect x="8" y="8.4" width="8" height="3.4" rx="1.2"/><circle cx="9.3" cy="15.2" r="0.9" fill="currentColor" stroke="none"/><circle cx="14.7" cy="15.2" r="0.9" fill="currentColor" stroke="none"/><path d="M8.5 19.5l-1.6 2.4M15.5 19.5l1.6 2.4"/></svg>
+            </span>
+          </div>
+          <h3>Science Centre Metro Station</h3>
+          <p>Aqua Line · direct <span style="white-space:nowrap">North–South</span> metro connectivity</p>
+          <div class="walk">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="13" cy="4" r="2"/><path d="M11 21l1-6-3-2 2-5 3 3 3 1"/><path d="M9 13l-2 3"/></svg>
+            20 min walk
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FLEXIBLE FORMATS -->
+    <div class="formats">
+      <div class="eyebrow">Flexible Formats</div>
+      <div class="fgrid">
+        <div class="fcard dark">
+          <div class="corner"></div>
+          <div class="ftag">Plug &amp; Play</div>
+          <h3>Move in. Get to work.</h3>
+          <p>Fully furnished workspaces designed for immediate deployment and instant team productivity from day one.</p>
+        </div>
+        <div class="fcard lite">
+          <div class="corner"></div>
+          <div class="ftag">Built to Suit</div>
+          <h3>Designed around you.</h3>
+          <p>Custom floor plans, tailored branding, and architecture engineered to match your unique culture.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AMENITIES -->
+    <div class="amen">
+      <div class="eyebrow">Amenities</div>
+      <div class="agrid">
+        <div class="acell">
+          <span class="ai"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg></span>
+          <h4>24×7 Security &amp; Access</h4>
+        </div>
+        <div class="acell">
+          <span class="ai"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 17h14v2H5z"/><path d="M7 17v-3a5 5 0 0110 0v3"/><path d="M12 6V4"/><circle cx="12" cy="6" r="1" fill="currentColor" stroke="none"/></svg></span>
+          <h4>Reception &amp; Front Desk</h4>
+        </div>
+        <div class="acell">
+          <span class="ai"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9a13 13 0 0118 0"/><path d="M6 12.5a8.5 8.5 0 0112 0"/><path d="M9 16a4 4 0 016 0"/><circle cx="12" cy="19" r="1.2" fill="currentColor" stroke="none"/></svg></span>
+          <h4>High‑Speed Internet</h4>
+        </div>
+        <div class="acell">
+          <span class="ai"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="2.4"/><circle cx="16" cy="8" r="2.4"/><path d="M3.5 18c0-2.8 2-4.4 4.5-4.4S12.5 15.2 12.5 18"/><path d="M11.5 18c0-2.8 2-4.4 4.5-4.4s4.5 1.6 4.5 4.4"/></svg></span>
+          <h4>Meeting Rooms &amp; Collaboration Zones</h4>
+        </div>
+        <div class="acell">
+          <span class="ai"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg></span>
+          <h4>Power Backup &amp; Lifts</h4>
+        </div>
+        <div class="acell">
+          <span class="ai"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 16V8h3.2a2.4 2.4 0 010 4.8H9"/></svg></span>
+          <h4>Ample Parking</h4>
+        </div>
+        <div class="acell">
+          <span class="ai"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 10h11v3a5 5 0 01-5 5H10a5 5 0 01-5-5z"/><path d="M16 11h2.2a2.3 2.3 0 010 4.6H16"/><path d="M8 4v2M11 3.5V6"/></svg></span>
+          <h4>Cafeteria</h4>
+        </div>
+        <div class="acell">
+          <span class="ai"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 21V11l4-5 4 5v10"/><path d="M5 21h14"/><path d="M11 6V3"/><path d="M16 8l2-1.5"/></svg></span>
+          <h4>Dedicated Housekeeping</h4>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRUSTED -->
+    <div class="trusted">
+      <div class="eyebrow">Trusted by Leading Enterprises</div>
+      <div class="logos">
+        <div class="lbox"><img src="assets/logo-royalsundaram-new.png" alt="Royal Sundaram Insurance"></div>
+        <div class="lbox"><img src="assets/logo-safegold-tight.jpg" alt="SafeGold"></div>
+        <div class="lbox"><img src="assets/logo-uniacco-tight.png" alt="UniAcco"></div>
+        <div class="lbox tv9"><img src="assets/logo-tv9-tight.jpg" alt="TV9"></div>
+        <div class="lbox"><img src="assets/logo-fcbkinnect-tight.png" alt="FCB Kinnect"></div>
+        <div class="lbox"><img src="assets/logo-lightyears-tight.jpg" alt="Lightyears Health"></div>
+        <div class="lbox"><img src="assets/logo-melento.png" alt="Melento"></div>
+        <div class="lbox"><img src="assets/logo-yangpoo-tight.jpg" alt="Yangpoo University Partners"></div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="fleft">
+        <img src="assets/autopilot-logo-tight.jpg" alt="Autopilot" style="height:22px;width:auto;filter:invert(1);margin-bottom:8px;">
+        <div class="cta">Reserve your space at Mafatlal Chambers.</div>
+        <div class="sub">Schedule a private walkthrough with the Autopilot team.</div>
+      </div>
+      <div class="fcontact">
+        <form class="fform" id="tourForm" action="https://formsubmit.co/nirupam.lahiri@worksquare.in" method="POST">
+          <input type="hidden" name="_subject" value="Tour request — Mafatlal Chambers">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" id="formNextUrl" value="">
+          <div class="ff"><label>Name *</label><input type="text" name="Name" required placeholder="John Doe"></div>
+          <div class="ff"><label>Work Email *</label><input type="email" name="Work Email" id="workEmail" required placeholder="name@company.com"></div>
+          <div class="ff"><label>Phone Number *</label><input type="tel" name="Phone Number" required placeholder="+91 98765 43210"></div>
+          <div class="ff"><label>Company *</label><input type="text" name="Company" required placeholder="Acme Corp"></div>
+          <div class="ff full"><label>Job Title *</label><input type="text" name="Job Title" required placeholder="Director of Operations"></div>
+          <button class="fsubmit" type="submit">Schedule a Tour</button>
+          <div class="fmsg" id="formMsg"></div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div id="confirmationModal" class="confirm-modal">
+    <div class="confirm-card">
+      <div class="check-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <h2>Tour Request Submitted!</h2>
+      <p>Thank you for reaching out. The Autopilot team has received your request and will contact you shortly at your work email to schedule your private walkthrough at Mafatlal Chambers.</p>
+      <button type="button" class="confirm-close-btn" onclick="closeConfirmationModal()">Close</button>
+    </div>
+  </div>
+
+<script>
+function closeConfirmationModal(){
+  var modal = document.getElementById('confirmationModal');
+  if(modal) modal.classList.remove('active');
+  // Clean up URL parameter if present
+  if (window.history && window.history.replaceState) {
+    var cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+    window.history.replaceState({path: cleanUrl}, '', cleanUrl);
+  }
+}
+
+(function(){
+  var form=document.getElementById('tourForm');
+  if(!form)return;
+
+  // Set the next URL for native form submit fallback
+  var nextInput = document.getElementById('formNextUrl');
+  if(nextInput) {
+    nextInput.value = window.location.href.split('?')[0] + '?submitted=true';
+  }
+
+  // Check if page loaded after native submission redirect
+  if (window.location.search.indexOf('submitted=true') !== -1) {
+    var modal = document.getElementById('confirmationModal');
+    if(modal) modal.classList.add('active');
+  }
+
+  var blockedDomains = [
+    'gmail.com', 'yahoo.com', 'yahoo.co.in', 'hotmail.com', 
+    'outlook.com', 'icloud.com', 'rediffmail.com', 'aol.com', 
+    'live.com', 'ymail.com', 'protonmail.com', 'msn.com', 
+    'zoho.com', 'gmx.com', 'mail.com'
+  ];
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var msg=document.getElementById('formMsg');
+    var btn=form.querySelector('.fsubmit');
+    var emailInput=document.getElementById('workEmail');
+    var emailVal=(emailInput.value||'').trim().toLowerCase();
+
+    // Check if work email uses a blocked personal email domain
+    var domain = emailVal.split('@')[1] || '';
+    if(blockedDomains.indexOf(domain) !== -1) {
+      msg.className='fmsg err';
+      msg.textContent='Please enter a valid work/company email address. Personal emails (like @' + domain + ') are not accepted.';
+      emailInput.focus();
+      return;
+    }
+
+    msg.className='fmsg';
+    msg.textContent='';
+    btn.disabled=true;btn.textContent='Sending\u2026';
+    var payload={};
+    Array.prototype.forEach.call(form.elements,function(el){if(el.name)payload[el.name]=el.value;});
+    fetch('https://formsubmit.co/ajax/nirupam.lahiri@worksquare.in',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(payload)
+    }).then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});}).then(function(res){
+      if(!res.ok||res.j.success==='false'||res.j.success===false)throw new Error(res.j.message||'send failed');
+      
+      // Show confirmation banner & modal popup
+      msg.className='fmsg ok';
+      msg.textContent='Thank you \u2014 your details have been sent. The Autopilot team will reach out shortly.';
+      var modal = document.getElementById('confirmationModal');
+      if(modal) modal.classList.add('active');
+
+      form.reset();btn.disabled=false;btn.textContent='Schedule a Tour';
+    }).catch(function(){
+      // Fall back to native POST, which redirects back with ?submitted=true to trigger modal
+      btn.disabled=false;btn.textContent='Schedule a Tour';
+      form.removeEventListener?null:null;
+      form.onsubmit=null;
+      HTMLFormElement.prototype.submit.call(form);
+    });
+  });
+})();
+</script>
+</body>
+</html>
