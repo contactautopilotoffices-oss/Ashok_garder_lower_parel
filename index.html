@@ -585,7 +585,7 @@
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_next" id="formNextUrl" value="">
           <div class="ff"><label>Name *</label><input type="text" name="Name" required placeholder="John Doe"></div>
-          <div class="ff"><label>Work Email *</label><input type="email" name="Work Email" id="workEmail" required placeholder="name@company.com"></div>
+          <div class="ff"><label>Email *</label><input type="email" name="Email" id="workEmail" required placeholder="name@example.com"></div>
           <div class="ff"><label>Phone Number *</label><input type="tel" name="Phone Number" required placeholder="+91 98765 43210"></div>
           <div class="ff"><label>Company *</label><input type="text" name="Company" required placeholder="Acme Corp"></div>
           <div class="ff full"><label>Job Title *</label><input type="text" name="Job Title" required placeholder="Director of Operations"></div>
@@ -639,28 +639,10 @@ function closeConfirmationModal(){
     if(modal) modal.classList.add('active');
   }
 
-  var blockedDomains = [
-    'gmail.com', 'yahoo.com', 'yahoo.co.in', 'hotmail.com', 
-    'outlook.com', 'icloud.com', 'rediffmail.com', 'aol.com', 
-    'live.com', 'ymail.com', 'protonmail.com', 'msn.com', 
-    'zoho.com', 'gmx.com', 'mail.com'
-  ];
-
   form.addEventListener('submit',function(e){
     e.preventDefault();
     var msg=document.getElementById('formMsg');
     var btn=form.querySelector('.fsubmit');
-    var emailInput=document.getElementById('workEmail');
-    var emailVal=(emailInput.value||'').trim().toLowerCase();
-
-    // Check if work email uses a blocked personal email domain
-    var domain = emailVal.split('@')[1] || '';
-    if(blockedDomains.indexOf(domain) !== -1) {
-      msg.className='fmsg err';
-      msg.textContent='Please enter a valid work/company email address. Personal emails (like @' + domain + ') are not accepted.';
-      emailInput.focus();
-      return;
-    }
 
     msg.className='fmsg';
     msg.textContent='';
