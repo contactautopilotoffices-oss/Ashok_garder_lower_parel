@@ -200,11 +200,26 @@
     padding:40px 64px;
     display:flex;align-items:flex-start;justify-content:space-between;gap:30px;
   }
-  .footer .fleft{display:flex;flex-direction:column;align-items:flex-start;gap:8px;}
+  .footer .fleft{display:flex;flex-direction:column;align-items:flex-start;gap:10px;max-width:520px;}
   .footer .cta{
-    font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.01em;
+    font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:-.01em;line-height:1.2;
   }
-  .footer .sub{font-size:14px;color:#b9bcc6;letter-spacing:.02em;}
+  .footer .sub{font-size:15px;color:#b9bcc6;letter-spacing:.01em;line-height:1.4;}
+  .footer-addr{
+    margin-top:14px;
+    padding-top:16px;
+    border-top:1px solid rgba(255,255,255,0.15);
+    display:flex;flex-direction:column;gap:6px;
+    width:100%;
+  }
+  .footer-addr .addr-label{
+    font-family:var(--text);font-weight:700;font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--cobalt);
+    display:flex;align-items:center;gap:7px;
+  }
+  .footer-addr .addr-text{
+    font-size:14px;line-height:1.55;color:#c7cad2;letter-spacing:.01em;
+  }
   .footer .fbtn{
     display:inline-flex;align-items:center;gap:11px;
     background:var(--cobalt);color:#fff;text-decoration:none;
@@ -495,6 +510,17 @@
         <img src="assets/autopilot-logo-clean.png" alt="Autopilot" style="height:24px;width:auto;margin-bottom:8px;">
         <div class="cta">Reserve your space at Mafatlal Chambers.</div>
         <div class="sub">Schedule a private walkthrough with the Autopilot team.</div>
+        <div class="footer-addr">
+          <div class="addr-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            Address
+          </div>
+          <div class="addr-text">
+            Autopilot Offices, 1st Floor, D-Wing, Marathon Futurex,<br>
+            Mafatlal Chambers, NM Joshi Marg, opp. BDD Chawl,<br>
+            Lower Parel East, Mumbai, Maharashtra 400013
+          </div>
+        </div>
       </div>
       <div class="fcontact">
         <form class="fform" id="tourForm" action="https://formsubmit.co/nirupam.lahiri@worksquare.in" method="POST">
